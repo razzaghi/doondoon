@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "PORT=9092 babel-node ./bin/www --presets es2015,stage-2",
+    "build": "babel . -d dist",
     "dev": "PORT=9092 nodemon ./bin/www --exec babel-node --presets es2015,stage-2",
     "generate-schema-type": "babel-node src/scripts/generate-schema-type.js",
     "import-json": "babel-node src/scripts/import-from-json.js",
