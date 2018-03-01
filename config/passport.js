@@ -1,24 +1,31 @@
-var JwtStrategy = require('passport-jwt').Strategy,
-    ExtractJwt = require('passport-jwt').ExtractJwt;
+import passport from 'passport'
+import { ExtractJwt, Strategy as JWTStrategy } from 'passport-jwt'
 
-// load up the user model
-var User = require('../models/user');
-var config = require('../config/database'); // get db config file
+import UserModel from '../models/user'
 
-module.exports = function(passport) {
-  var opts = {};
-  opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
-  opts.secretOrKey = config.secret;
-  passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-    User.findOne({id: jwt_payload.id}, function(err, user) {
-          if (err) {
-              return done(err, false);
-          }
-          if (user) {
-              done(null, user);
-          } else {
-              done(null, false);
-          }
-      });
-  }));
+/** JWT strategy for authorize to protect routes  */
+const jwtOpts = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("JWT"),
+  secretOrKey: 'aslsdjfoweoivlskjdfjijewfwef'
 };
+
+const jwtLogin = new JWTStrategy(jwtOpts, async (payload, done) => {
+  try {
+    const user = await UserModel.findById(payload.sub);
+    if (!user) {
+      return done(null, false);
+    }
+    return done(null, user);
+  } catch (error) {
+    return done(error, false);
+  }
+});
+
+
+
+/** Apply all login strategy */
+// passport.use(localLogin);
+passport.use(jwtLogin);
+
+// export const authLocal = passport.authenticate("local", { session: false });
+export default passport;

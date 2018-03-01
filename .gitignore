@@ -1,0 +1,25 @@
+.env
+yarn-error.log
+backup/backup.conf
+backup/sync.conf
+/logs.txt
+/dist
+
+!.idea
+.idea/
+
+# Sensitive or high-churn files:
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.xml
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/codeStyleSettings.xml
+
+# Vim temporary files
+*sw[pomnlkj]
+
+node_modules
+/nbproject/
