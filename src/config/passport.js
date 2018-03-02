@@ -1,4 +1,4 @@
-import passport from 'passport'
+import passport from 'src/config/passport'
 import { ExtractJwt, Strategy as JWTStrategy } from 'passport-jwt'
 
 import UserModel from '../models/user'

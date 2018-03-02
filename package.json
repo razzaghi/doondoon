@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=9092 babel-node ./bin/www --presets es2015,stage-2",
-    "build": "babel . -d dist",
-    "dev": "PORT=9092 nodemon ./bin/www --exec babel-node --presets es2015,stage-2",
+    "start": "PORT=9092 babel-node ./src/bin/www --presets es2015,stage-2",
+    "build": "babel ./src -d dist",
+    "dev": "PORT=9092 nodemon ./src/bin/www --exec babel-node --presets es2015,stage-2",
     "generate-schema-type": "babel-node src/scripts/generate-schema-type.js",
     "import-json": "babel-node src/scripts/import-from-json.js",
     "load-seed": "babel-node src/scripts/load-seed",
