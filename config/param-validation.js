@@ -9,6 +9,12 @@ export default {
     }
   },
 
+  createGame2048: {
+    body: {
+      username: Joi.string().required(),
+    }
+  },
+
   // UPDATE /api/users/:userId
   updateUser: {
     body: {

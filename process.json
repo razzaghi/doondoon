@@ -1,0 +1,9 @@
+{
+  "apps" : [{
+    "name"       : "game-api",
+    "script"     : "dist/index.js",
+    "instances"  : 4,
+    "exec_mode"  : "cluster",
+    "max_memory_restart": "1024M"
+  }]
+}
