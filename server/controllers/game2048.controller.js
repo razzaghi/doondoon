@@ -61,6 +61,20 @@ function createOrUpdate(req, res, next) {
     });
 }
 
+function checkGame2048(req, res) {
+  Game2048.getByUsername(req.body.username)
+    .then(() => {
+      res.writeHead(200, { 'content-type': 'text/html' });
+      res.write('1');
+      res.end();
+    })
+    .catch(() => {
+      res.writeHead(200, { 'content-type': 'text/html' });
+      res.write('0');
+      res.end();
+    });
+}
+
 /**
  * Update existing user
  * @property {string} req.body.username - The username of user.
@@ -102,4 +116,4 @@ function remove(req, res, next) {
     .catch(e => next(e));
 }
 
-export default { load, get, create, update, list, remove, createOrUpdate };
+export default { load, get, create, update, list, remove, createOrUpdate, checkGame2048 };

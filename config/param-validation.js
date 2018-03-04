@@ -14,6 +14,11 @@ export default {
       username: Joi.string().required(),
     }
   },
+  checkGame2048: {
+    body: {
+      username: Joi.string().required(),
+    }
+  },
 
   // UPDATE /api/users/:userId
   updateUser: {
