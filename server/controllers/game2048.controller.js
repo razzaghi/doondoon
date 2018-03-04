@@ -65,12 +65,12 @@ function checkGame2048(req, res) {
   Game2048.getByUsername(req.body.username)
     .then(() => {
       res.writeHead(200, { 'content-type': 'text/html' });
-      res.write(1);
+      res.write(true);
       res.end();
     })
     .catch(() => {
       res.writeHead(200, { 'content-type': 'text/html' });
-      res.write(0);
+      res.write(false);
       res.end();
     });
 }
