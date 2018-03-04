@@ -64,13 +64,13 @@ function createOrUpdate(req, res, next) {
 function checkGame2048(req, res) {
   Game2048.getByUsername(req.body.username)
     .then(() => {
-      res.writeHead(200, { 'content-type': 'text/html' });
-      res.write(true);
+      res.writeHead(200, { 'content-type': 'text/plain' });
+      res.write('1');
       res.end();
     })
     .catch(() => {
-      res.writeHead(200, { 'content-type': 'text/html' });
-      res.write(false);
+      res.writeHead(200, { 'content-type': 'text/plain' });
+      res.write('0');
       res.end();
     });
 }
