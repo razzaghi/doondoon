@@ -10,7 +10,9 @@ router.route('/')
   .get(game2048Ctrl.list)
 
   /** POST /api/game2048 - Create or Update */
-  .post(validate(paramValidation.createGame2048), game2048Ctrl.createOrUpdate)
+  .post(validate(paramValidation.createGame2048), game2048Ctrl.createOrUpdate);
+
+router.route('/checkUsername')
   .post(validate(paramValidation.checkGame2048), game2048Ctrl.checkGame2048);
 
 export default router;
