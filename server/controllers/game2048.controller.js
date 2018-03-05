@@ -30,6 +30,7 @@ function create(req, res, next) {
   const gameUser = new Game2048({
     username: req.body.username,
     displayName: req.body.displayName,
+    token: req.body.token,
     point: req.body.point,
   });
 
@@ -45,6 +46,7 @@ function createOrUpdate(req, res, next) {
     .then((gameUser) => {
       game2048 = gameUser; // eslint-disable-line no-param-reassign
       game2048.point = req.body.point;
+      game2048.token = req.body.token;
       game2048.save()
         .then(savedUser => res.json(savedUser))
         .catch(e => next(e));
@@ -53,6 +55,7 @@ function createOrUpdate(req, res, next) {
       game2048 = new Game2048({
         username: req.body.username,
         displayName: req.body.displayName,
+        token: req.body.token,
         point: req.body.point,
       });
       game2048.save()
@@ -85,6 +88,7 @@ function update(req, res, next) {
   const game2048 = req.user;
   game2048.username = req.body.username;
   game2048.displayName = req.body.displayName;
+  game2048.token = req.body.token;
   game2048.point = req.body.point;
 
   game2048.save()

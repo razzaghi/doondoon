@@ -15,6 +15,9 @@ const Game2048Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  token: {
+    type: [String],
+  },
   point: {
     type: Number,
     required: true,
@@ -81,7 +84,7 @@ Game2048Schema.statics = {
    * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<User[]>}
    */
-  list({ skip = 0, limit = 10 } = {}) {
+  list({ skip = 0, limit = 8 } = {}) {
     return this.find()
       .sort({ point: -1 })
       .skip(+skip)
